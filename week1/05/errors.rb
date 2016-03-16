@@ -1,17 +1,30 @@
-require 'pry'
+require 'pry'  # => true
 
-def floop(x)  # ~> ArgumentError: wrong number of arguments (given 0, expected 1)
+class Blog
+  def title
+    "Treehouse Blog"  # => "Treehouse Blog"
+  end                 # => :title
+end                   # => :title
 
-  binding.pry
+# require 'minitest'  # => true
 
-  x * x
+class TestBlog < Minitest::Test  # => Minitest::Test
 
-end  # => :floop
+  def setup
+    @blog = Blog.new  # => #<Blog:0x007fb7e1bbac38>
+  end                 # => :setup
 
-puts floop(12)
+  def test_title_is_treehouse
+    assert_equal "Treehouse Blog", @blog.title  # => true
+  end                                           # => :test_title_is_treehouse
+end                                             # => :test_title_is_treehouse
 
-# ~> ArgumentError
-# ~> wrong number of arguments (given 0, expected 1)
-# ~>
-# ~> /Users/rposborne/Desktop/class/week1/05/errors.rb:1:in `floop'
-# ~> /Users/rposborne/Desktop/class/week1/05/errors.rb:6:in `<main>'
+# >> Run options: --seed 8418
+# >>
+# >> # Running:
+# >>
+# >> .
+# >>
+# >> Finished in 0.001022s, 978.7982 runs/s, 978.7982 assertions/s.
+# >>
+# >> 1 runs, 1 assertions, 0 failures, 0 errors, 0 skips

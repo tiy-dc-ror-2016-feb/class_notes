@@ -8,7 +8,7 @@ class __how__ are you doing today?
 
 @rposborne
 
-  [ ] I am task
+- [ ] I am task
 
 1. I am a numbered list
 2. So am i

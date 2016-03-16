@@ -1,0 +1,25 @@
+class Student
+    def initialize(name, gpa)
+        @name = name                           # => "Nadia", "Nadia", "JimBob", "Cheryl", "Jesus De Cristo Gomez De La Cruz"
+        @gpa = gpa                             # => 3.5, 3.52, 3.56, 3.48, 3.5
+        @course = "Underwater Basket Weaving"  # => "Underwater Basket Weaving", "Underwater Basket Weaving", "Underwater Basket Weaving", "Underwater Basket Weaving", "Underwater Basket Weaving"
+    end                                        # => :initialize
+
+    def turn_in_homework
+    end                   # => :turn_in_homework
+
+    def go_to_class
+    end              # => :go_to_class
+
+    def learn
+    end        # => :learn
+end            # => :learn
+
+Student.new("Nadia", 3.5)  # => #<Student:0x007fd64b01bcc8 @name="Nadia", @gpa=3.5, @course="Underwater Basket Weaving">
+
+my_class = [
+    Student.new("Nadia", 3.52),                            # => #<Student:0x007fd64b01ad28 @name="Nadia", @gpa=3.52, @course="Underwater Basket Weaving">
+    Student.new("JimBob", 3.56),                           # => #<Student:0x007fd64b01a5d0 @name="JimBob", @gpa=3.56, @course="Underwater Basket Weaving">
+    Student.new("Cheryl", 3.48),                           # => #<Student:0x007fd64b019e78 @name="Cheryl", @gpa=3.48, @course="Underwater Basket Weaving">
+    Student.new("Jesus De Cristo Gomez De La Cruz", 3.50)  # => #<Student:0x007fd64b019680 @name="Jesus De Cristo Gomez De La Cruz", @gpa=3.5, @course="Underwater Basket Weaving">
+]
