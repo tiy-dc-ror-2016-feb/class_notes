@@ -3,13 +3,17 @@ require 'rubygems'
 require 'bundler/setup'
 # Dependenices
 require 'active_record'
+require 'pry'
 
 # Program Things
 require './db_connection.rb'
 require './student'
+require './pick'
 require './students_and_picks_migration'
 
-StudentsAndPicksMigration.migrate(:up)
+binding.pry
+
+# StudentsAndPicksMigration.migrate(:up)
 
 #
 # students = []

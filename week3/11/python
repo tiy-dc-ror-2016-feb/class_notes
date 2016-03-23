@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+import time
+
+raw_input("Cat's Program? [OK/OK] ")
+
+while True:
+  print "🍔"
+  time.sleep(0.5)

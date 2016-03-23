@@ -1,38 +1,41 @@
 # "I want a program that randomly selects a student, but fairly"
 
 students = []
-selected_students = []
+
+class Student
+  attr_reader :name, :count
+  def initialize(name:, count:)
+    @name = name
+    @count = count.to_i
+  end
+
+  def pick!
+    @count += 1
+  end
+end
 
 File.open("./students.txt") do |file|
-  file.each do |student|
-    students << student.chomp
+  file.each_line do |line|
+    row = line.chomp.split(",")
+    students << Student.new(name: row[0], count: row[1])
   end
 end
 
-File.open("./selected_students.txt", "r+") do |file|
-  file.each do |student|
-    selected_students << student.chomp
-  end
-end
+lowest_participation = students.map{ |s| s.count }.min
 
-class_participation = {}
+students_on_deck = students.select { |student| student.count == lowest_participation }
 
-students.each do |student|
-  class_participation[student] = selected_students.count {|s| s == student }
-end
+picked_student = students_on_deck.sample
 
-p class_participation
+p "Out of #{students.length}. #{picked_student.name} gets to answer!"
+# p "We picked #{selected_students.join(", ")} in the past"
 
-never_picked_students = students - selected_students
-picked_student = never_picked_students.sample
+# picked_student
+picked_student.pick!
 
-p "Out of #{students.length}. #{picked_student} gets to answer"
-p "We picked #{selected_students.join(", ")} in the past"
-
-selected_students << picked_student
-
-File.open("./selected_students.txt", "w") do |file|
-  selected_students.each do |student|
-    file << "#{student}\n"
+#
+File.open("./students.txt", "w") do |file|
+  students.each do |student|
+    file << "#{student.name},#{student.count}\n"
   end
 end

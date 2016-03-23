@@ -1,6 +1,0 @@
-Steve,0
-Sam,0
-Bo,0
-Mike,0
-Nadia,0 
-Sam

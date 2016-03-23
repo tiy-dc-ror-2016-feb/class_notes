@@ -6,7 +6,8 @@ class StudentsAndPicksMigration < ActiveRecord::Migration
 
     create_table :picks do |t|
       t.integer :student_id
-      t.timestamp :picked_on
+      t.timestamp :picked_at
     end
+
   end
 end

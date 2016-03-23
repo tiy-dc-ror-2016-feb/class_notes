@@ -1,11 +1,10 @@
-class Student
-  attr_reader :name, :count
-  def initialize(name:, count:)
-    @name = name
-    @count = count.to_i
-  end
+require 'active_record'
+
+class Student < ActiveRecord::Base
+  has_many(:picks)
 
   def pick!
-    @count += 1
+    puts "PICKING #{name}"
+    Pick.create(student_id: id, picked_at: Time.now)
   end
 end

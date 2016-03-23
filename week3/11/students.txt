@@ -1,5 +1,5 @@
-Mike
-Nadia
-Sam
-Bo
-Steve
+Mike,3
+Nadia,2
+Sam,2
+Bo,2
+Steve,3

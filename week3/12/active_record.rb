@@ -2,6 +2,11 @@ require 'rubygems'
 require 'bundler/setup'
 require 'active_record'
 
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'db.sqlite3'
+)
+
 class DeveloperMigration < ActiveRecord::Migration
   def change
     create_table :developers do |t|
@@ -12,4 +17,4 @@ class DeveloperMigration < ActiveRecord::Migration
   end
 end
 
-DeveloperMigration.new.change
+DeveloperMigration.migrate(:up)
