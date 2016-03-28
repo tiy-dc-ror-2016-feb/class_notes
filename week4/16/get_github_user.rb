@@ -1,46 +1,35 @@
 require 'net/http'
 require 'json'
 require 'pry'
+require 'minitest/autorun'
 
-class Gists
-  attr_reader :user
-  def initialize(user)
-    @user = user
-  end
 
-  def create(new_gist_data)
-    payload = JSON.generate(new_gist_data)
-    uri = URI("https://api.github.com/gists")
-    req = Net::HTTP::Post.new(uri, {'Content-Type' =>'application/json'})
-    req.basic_auth ENV['GITHUB_USER'], ENV['GITHUB_PASSWORD']
-    req.body = payload
-
-    #
-    http = Net::HTTP.new(uri.hostname, uri.port)
-    #
-    http.use_ssl = true
-    http.start
-    response = http.request(req)
-    return response
-  end
-
+class Issue
   def list
-    uri = URI("https://api.github.com/users/#{user}/gists")
-    response = Net::HTTP.get(uri)
-    return JSON.parse(response)
+    uri = URI("https://api.github.com/issues")
+    user = ENV['GITHUB_USER']
+    password = ENV['GITHUB_PASSWORD']
+
+    # Build client
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    # Build request
+    req = Net::HTTP::Get.new(uri.request_uri)
+    req.basic_auth(user, password)
+
+    # Actually Perform the request
+    response = http.request(req)
+
+    # Turn the request body into a ruby object
+    return JSON.parse(response.body)
   end
 end
 
-new_gist = {
-  "description" => "the description for this gist",
-  "public" => true,
-  "files" => {
-    "file1.txt" => {
-      "content" => "String file contents"
-    }
-  }
-}
 
-a = Gists.new("rposborne")
-binding.pry
-puts "hello"
+class IssueTest < Minitest::Test
+  def test_issue_can_list_issues
+    api = Issue.new
+    assert_equal 2, api.list.size
+  end
+end
