@@ -3,7 +3,7 @@ require 'json'
 require 'pry'
 
 class Issue
-  ENDPOINT = "https://api.github.com/issues"
+  ENDPOINT = "https://api.github.com/user/issues"
   def list
     # Turn the request body into a ruby object
     response = query_list

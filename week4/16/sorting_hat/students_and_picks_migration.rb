@@ -8,6 +8,5 @@ class StudentsAndPicksMigration < ActiveRecord::Migration
       t.integer :student_id
       t.timestamp :picked_at
     end
-
   end
 end

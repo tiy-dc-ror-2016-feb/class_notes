@@ -1,8 +1,12 @@
-require "rubygems"
-require "bundler/setup"
+# require "rubygems"
+# require "bundler/setup"
 require "active_record"
 require "minitest/autorun"
+require "sinatra"
+require "rack/test"
+
 require "./student"
+require "./pick"
 require "./students_and_picks_migration"
 
 ActiveRecord::Base.establish_connection(

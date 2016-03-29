@@ -4,13 +4,13 @@ require 'pry'
 require 'minitest/autorun'
 require './issue'
 
-class Issue
-
-  def query_list
-    File.read("./authed_issues.json")
-  end
-
-end
+# class Issue
+#
+#   def query_list
+#     File.read("./authed_issues.json")
+#   end
+#
+# end
 
 class IssueTest < Minitest::Test
   def test_issue_can_list_issues
